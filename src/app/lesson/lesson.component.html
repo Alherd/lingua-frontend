@@ -1,20 +1,44 @@
-<form [formGroup]="myForm">
-    <p>Complete the sentences</p>
-    <label>1. Something that is <input type="text" id="fname1" name="fname11" formControlName="fname1" (keydown.enter)="checkField('fname1')"> does not cost a
-        lot to buy or use.</label><br>
-    <label>2. A <input type="text" id="fname2" name="fname22" formControlName="fname2" (keydown.enter)="checkField('fname2')"> product has no
-        defects.</label><br>
-    <label>3. A <input type="text" id="fname3" name="fname33" formControlName="fname3" (keydown.enter)="checkField('fname3')"> product is attractive and
-        fashionable.</label><br>
-    <label>4. <input type="text" id="fname4" name="fname44" formControlName="fname4" (keydown.enter)="checkField('fname4')"> goods are expensive and intended
-        to appeal to people in a high social class.</label><br>
-    <label>5. If a product is <input type="text" id="fname5" name="fname55" formControlName="fname5"  (keydown.enter)="checkField('fname5')"> it is worth the
-        price you pay for it.</label><br>
-    <label>6. If something is <input type="text" id="fname6" name="fname66" formControlName="fname6" (keydown.enter)="checkField('fname6')"> you can trust it
-        or depend on it.</label><br>
-    <label>7. A <input type="text" id="fname7" name="fname77" formControlName="fname7" (keydown.enter)="checkField('fname7')"> brand is not affected by changes
-        in fashion.</label><br>
+<div class="container">
+    <div class="content" id="lesson1_container_content">
+        <p>Complete the sentences</p>
+        <label>1. Something that is <input type="text" id="fname1" name="fname11"
+                (keydown.enter)="checkField('fname1', 'inexpensive')">
+            does not cost a
+            lot to buy or use.</label>
+        <div><br></div>
+        <label>2. A <input type="text" id="fname2" name="fname2" (keydown.enter)="checkField('fname2', 'well-made')">
+            product has no
+            defects.</label>
+        <div><br></div>
+        <label>3. A <input type="text" id="fname3" name="fname3" (keydown.enter)="checkField('fname3', 'stylish')">
+            product is
+            attractive and
+            fashionable.</label><br>
+        <div><br></div>
+        <label>4. <input type="text" id="fname4" name="fname4" (keydown.enter)="checkField('fname4', 'upmarket')"> goods
+            are
+            expensive
+            and intended
+            to appeal to people in a high social class.</label><br>
+        <div><br></div>
+        <label>5. If a product is <input type="text" id="fname5" name="fname55"
+                (keydown.enter)="checkField('fname5', 'value for money')">
+            it
+            is worth the
+            price you pay for it.</label><br>
+        <div><br></div>
+        <label>6. If something is <input type="text" id="fname6" name="fname66"
+                (keydown.enter)="checkField('fname6', 'reliable')">
+            you
+            can trust it
+            or depend on it.</label><br>
+        <div><br></div>
+        <label>7. A <input type="text" id="fname7" name="fname7" (keydown.enter)="checkField('fname7', 'timeless')">
+            brand is not
+            affected by changes
+            in fashion.</label><br>
 
-    <br><button class="btn btn-info">Check</button><br>
+        <br><button class="btn btn-info">Check</button><br>
 
-</form>
+    </div>
+</div>
