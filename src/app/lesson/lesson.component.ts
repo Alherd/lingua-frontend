@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { LessonService } from './lesson.service';
 import { Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,10 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class LessonComponent {
-  myForm!: FormGroup;
-
-  answers1: Answers = { 'fname1': "inexpensive", 'fname2': "well-made", 'fname3': "stylish", 'fname4': "upmarket", 'fname5': "value for money", 'fname6': "reliable", 'fname7': "timeless" }
-  message = ''
+  templateId: string = '';
 
   checkField(fname: String, answer: String) {
     const element = document.getElementById(`${fname}`) as HTMLInputElement;
@@ -36,7 +32,6 @@ export class LessonComponent {
 
     var isAllDisabled: Boolean = true;
     inputElements?.forEach((input: HTMLInputElement) => {
-      // Выполните необходимые операции с каждым элементом input
       if (!input.disabled) {
         console.log('return')
         isAllDisabled = false;
@@ -48,25 +43,17 @@ export class LessonComponent {
     }
   }
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      // Получаем параметры маршрута
-      const pageId = params.get('pageId');
-    });
-  }
-
   constructor(private lessonService: LessonService,
-    private renderer: Renderer2, private route: ActivatedRoute) { }
+    private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
 
   getData() {
-    console.log('ljdwhwui')
     this.lessonService.getData().subscribe(data => {
-      // this.checkAnswers(data)
-      // Обработка полученных данных
     });
   }
-}
 
-interface Answers {
-  [key: string]: string;
+  ngOnInit() {
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.templateId = params.get('id') || '';
+    });
+  }
 }

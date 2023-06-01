@@ -10,10 +10,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LessonComponent } from './lesson/lesson.component';
-import { HttpClientModule } from '@angular/common/http'; // Импорт HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_ROUTES: Routes = [
-  { path: 'lessons/:lesson_id', component: LessonComponent },
+  { path: 'lessons/:id', component: LessonComponent },
   { path: 'about', component: LessonComponent }
 ]
 
