@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="content" id="lesson1_container_content">
+        <h2 [innerHTML]="jsonData?.title.replace('\n', '<br>')"></h2>
+        <div *ngFor="let task of jsonData?.tasks">
+            <p *ngFor="let answer of task.answers">
+              {{ task.sentences[task.answers.indexOf(answer)] }} 
+              <input type="text" [id]="'fname' + jsonData.tasks.indexOf(task) + task.answers.indexOf(answer)"
+                [name]="'fname' + task.answers.indexOf(answer)"
+                (keydown.enter)="checkField(jsonData.tasks.indexOf(task).toString(), task.answers.indexOf(answer) , answer)"> 
+            </p>
+            <p> {{ task.sentences[task.sentences.length - 1] }}</p>
+            <div><br></div>
+          </div>
+    </div>
+</div>
