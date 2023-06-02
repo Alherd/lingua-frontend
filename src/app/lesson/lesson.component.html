@@ -1,96 +1,15 @@
 <div class="container">
     <div class="content" id="lesson1_container_content">
-        <div [ngSwitch]="templateId">
-            <ng-container *ngSwitchCase="'1'">
-                <p>Complete the sentences</p>
-                <label>1. Something that is <input type="text" id="fname1" name="fname1"
-                        (keydown.enter)="checkField('fname1', 'inexpensive')">
-                    does not cost a
-                    lot to buy or use.</label>
-                <div><br></div>
-                <label>2. A <input type="text" id="fname2" name="fname2"
-                        (keydown.enter)="checkField('fname2', 'well-made')">
-                    product has no
-                    defects.</label>
-                <div><br></div>
-                <label>3. A <input type="text" id="fname3" name="fname3"
-                        (keydown.enter)="checkField('fname3', 'stylish')">
-                    product is
-                    attractive and
-                    fashionable.</label><br>
-                <div><br></div>
-                <label>4. <input type="text" id="fname4" name="fname4"
-                        (keydown.enter)="checkField('fname4', 'upmarket')"> goods
-                    are
-                    expensive
-                    and intended
-                    to appeal to people in a high social class.</label><br>
-                <div><br></div>
-                <label>5. If a product is <input type="text" id="fname5" name="fname55"
-                        (keydown.enter)="checkField('fname5', 'value for money')">
-                    it
-                    is worth the
-                    price you pay for it.</label><br>
-                <div><br></div>
-                <label>6. If something is <input type="text" id="fname6" name="fname66"
-                        (keydown.enter)="checkField('fname6', 'reliable')">
-                    you
-                    can trust it
-                    or depend on it.</label><br>
-                <div><br></div>
-                <label>7. A <input type="text" id="fname7" name="fname7"
-                        (keydown.enter)="checkField('fname7', 'timeless')">
-                    brand is not
-                    affected by changes
-                    in fashion.</label><br>
-
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-                <p>Complete the sentences</p>
-                <label>2. Something that is
-                    does not cost a
-                    lot to buy or use.</label>
-                <div><br></div>
-                <label>2. A <input type="text" id="fname2" name="fname2"
-                        (keydown.enter)="checkField('fname2', 'well-made')">
-                    product has no
-                    defects.</label>
-                <div><br></div>
-                <label>3. A <input type="text" id="fname3" name="fname3"
-                        (keydown.enter)="checkField('fname3', 'stylish')">
-                    product is
-                    attractive and
-                    fashionable.</label><br>
-                <div><br></div>
-                <label>4. <input type="text" id="fname4" name="fname4"
-                        (keydown.enter)="checkField('fname4', 'upmarket')"> goods
-                    are
-                    expensive
-                    and intended
-                    to appeal to people in a high social class.</label><br>
-                <div><br></div>
-                <label>5. If a product is <input type="text" id="fname5" name="fname55"
-                        (keydown.enter)="checkField('fname5', 'value for money')">
-                    it
-                    is worth the
-                    price you pay for it.</label><br>
-                <div><br></div>
-                <label>6. If something is <input type="text" id="fname6" name="fname66"
-                        (keydown.enter)="checkField('fname6', 'reliable')">
-                    you
-                    can trust it
-                    or depend on it.</label><br>
-                <div><br></div>
-                <label>7. A <input type="text" id="fname7" name="fname7"
-                        (keydown.enter)="checkField('fname7', 'timeless')">
-                    brand is not
-                    affected by changes
-                    in fashion.</label><br>
-
-            </ng-container>
-            <br>
-            <button>Prev</button>    
-            <button>Next</button>
-        </div>
+        <h2 [innerHTML]="jsonData?.title.replace('\n', '<br>')"></h2>
+        <div *ngFor="let task of jsonData?.tasks">
+            <p *ngFor="let answer of task.answers">
+              {{ task.sentences[task.answers.indexOf(answer)] }} 
+              <input type="text" [id]="'fname' + jsonData.tasks.indexOf(task) + task.answers.indexOf(answer)"
+                [name]="'fname' + task.answers.indexOf(answer)"
+                (keydown.enter)="checkField(jsonData.tasks.indexOf(task).toString(), task.answers.indexOf(answer) , answer)"> 
+            </p>
+            <p> {{ task.sentences[task.sentences.length - 1] }}</p>
+            <div><br></div>
+          </div>
     </div>
 </div>

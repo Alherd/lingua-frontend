@@ -1,0 +1,34 @@
+{
+    "title": "Complete the text with a verb from the list in the correct form:\n be, eat, get up, live, see",
+    "tasks": [
+        {
+            "answers": [],
+            "sentences": [
+                "Neil and Shirley"
+            ]
+        },
+        {
+            "answers": [],
+            "sentences": [
+                "Queensland, Australia"
+            ]
+        },
+        {
+            "answers": [
+                "live",
+                "being",
+                "seeing",
+                "get up",
+                "eating"
+            ],
+            "sentences": [
+                "We used to ",
+                "in England, but we've been living in Queensland, Australia, since 2010. We're used to",
+                "here now, but at first it was quite hard. We live in the country, and when we first moved into the house I just couldn't get used to",
+                "snakes in the garden, but now it's not a problem. We just leave them alone. Although we speak the same language, there are still some things here that are strange. People here usually",
+                "really early, at about 5.00 a.m., which we still haven't got used to.\n Christmas doesn't feel right either — I haven't got used to",
+                "roast turkey when the temperature is 40 degrees!"
+            ]
+        }
+    ]
+}

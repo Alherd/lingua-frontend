@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LessonService } from './lesson.service';
 import { Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-lesson',
@@ -11,9 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 
 export class LessonComponent {
   templateId: string = '';
+  jsonData: any;
 
-  checkField(fname: String, answer: String) {
-    const element = document.getElementById(`${fname}`) as HTMLInputElement;
+  checkField(fname1: String, fname2: String, answer: String) {
+    console.log(fname1, fname2, answer)
+    const element = document.getElementById(`fname${fname1}${fname2}`) as HTMLInputElement;
     const fieldValue = element?.value ?? '';
 
     if (fieldValue == '') {
@@ -44,7 +47,7 @@ export class LessonComponent {
   }
 
   constructor(private lessonService: LessonService,
-    private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
+    private renderer: Renderer2, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   getData() {
     this.lessonService.getData().subscribe(data => {
@@ -54,6 +57,18 @@ export class LessonComponent {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.templateId = params.get('id') || '';
+      this.loadJsonData();
     });
+  }
+
+  loadJsonData() {
+    this.http.get(`assets/${this.templateId}.json`).subscribe(data => {
+      this.jsonData = data;
+      console.log(this.jsonData.tasks[0])
+    });
+  }
+
+  formatText(text: string): string {
+    return text.replace(/\n/g, '<br>');
   }
 }
