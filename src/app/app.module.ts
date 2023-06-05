@@ -12,8 +12,10 @@ import { AppComponent } from './app.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { LessonsListComponent } from './lessons-list/lessons-list.component';
 
 const APP_ROUTES: Routes = [
+  { path: 'lessons', component: LessonsListComponent },
   { path: 'lessons/:id', component: LessonComponent },
   { path: 'about', component: LessonComponent },
   { path: '', component: LoginComponent }
@@ -23,7 +25,8 @@ const APP_ROUTES: Routes = [
   declarations: [
     AppComponent,
     LessonComponent,
-    LoginComponent
+    LoginComponent,
+    LessonsListComponent
   ],
   imports: [
     BrowserModule,

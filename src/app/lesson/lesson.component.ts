@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class LessonComponent {
   templateId: string = '';
   jsonData: any;
+  completedAnswers: any;
 
   checkField(fname1: String, fname2: String, answer: String) {
     console.log(fname1, fname2, answer)
@@ -26,6 +27,7 @@ export class LessonComponent {
     if (answer.toLowerCase() == fieldValue.toLowerCase()) {
       this.renderer.setAttribute(element, 'disabled', 'true');
       this.renderer.setStyle(element, 'background-color', '#98FB98');
+      this.lessonService.setCompletedForms(this.templateId, `fname${fname1}${fname2}`)
     } else {
       this.renderer.setStyle(element, 'background-color', '#f9dbbf');
     }
@@ -58,17 +60,42 @@ export class LessonComponent {
     this.activatedRoute.paramMap.subscribe(params => {
       this.templateId = params.get('id') || '';
       this.loadJsonData();
+      this.getCompletedForms();
     });
   }
 
   loadJsonData() {
     this.http.get(`assets/${this.templateId}.json`).subscribe(data => {
       this.jsonData = data;
-      console.log(this.jsonData.tasks[0])
+      console.log('jsonf=data')
+      console.log(this.jsonData.tasks[2].answers[0])
+    });
+  }
+
+  getCompletedForms() {
+    this.lessonService.getCompletedForms(this.templateId).subscribe(data => {
+      (data as Forms).forms.forEach(fname => {
+        const element = document.getElementById(`${fname}`) as HTMLInputElement;
+
+        this.renderer.setProperty(element, 'value', this.getAnswerByFname(fname));
+        this.renderer.setAttribute(element, 'disabled', 'true');
+        this.renderer.setStyle(element, 'background-color', '#98FB98');
+      });
     });
   }
 
   formatText(text: string): string {
     return text.replace(/\n/g, '<br>');
   }
+
+  getAnswerByFname(fname: any) {
+    const regex = /\d/g;
+    const indexArray = fname.match(regex)
+
+    return this.jsonData.tasks[indexArray[0]].answers[indexArray[1]];
+  }
+}
+
+interface Forms {
+  forms: any[];
 }

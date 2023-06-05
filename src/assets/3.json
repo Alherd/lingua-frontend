@@ -1,0 +1,77 @@
+{
+    "title": "Choose the correct answer",
+    "tasks": [
+        {
+            "answers": [
+                "sleep"
+            ],
+            "sentences": [
+                "1. Before my sister had children she used to",
+                "(sleep/sleeping) for eight hours every night."
+            ]
+        },
+        {
+            "answers": [
+                "driving"
+            ],
+            "sentences": [
+                "2. When we moved to Britain from Poland we weren't used to",
+                "(drive/driving) on the left."
+            ]
+        },
+        {
+            "answers": [
+                "living"
+            ],
+            "sentences": [
+                "3. Chris got divorced last year but he soon got used to",
+                "(live/living)on his own."
+            ]
+        },
+        {
+            "answers": [
+                "eat"
+            ],
+            "sentences": [
+                "4. When Lucy was little she didn't use to",
+                "(eat/eating) vegetables at all."
+            ]
+        },
+        {
+            "answers": [
+                "being"
+            ],
+            "sentences": [
+                "5. My parents are slowly getting used to",
+                "(be/being) retired."
+            ]
+        },
+        {
+            "answers": [
+                "getting up"
+            ],
+            "sentences": [
+                "6. My new job is exhausting. I'm not used to",
+                "(get up/getting up) so early."
+            ]
+        },
+        {
+            "answers": [
+                "play"
+            ],
+            "sentences": [
+                "7. Did you use to",
+                "(play/playing) a musical instrument at school?."
+            ]
+        },
+        {
+            "answers": [
+                "get used to"
+            ],
+            "sentences": [
+                "7. Living in a foreign country seems strange at first, but you soon",
+                "(get used / get used to) it."
+            ]
+        }
+    ]
+}
