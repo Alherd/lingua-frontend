@@ -51,16 +51,12 @@ export class LessonComponent {
   constructor(private lessonService: LessonService,
     private renderer: Renderer2, private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
-  getData() {
-    this.lessonService.getData().subscribe(data => {
-    });
-  }
-
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
       this.templateId = params.get('id') || '';
       this.loadJsonData();
       this.getCompletedForms();
+      this.hideAnswers();
     });
   }
 
@@ -105,6 +101,16 @@ export class LessonComponent {
     if (parseInt(this.templateId) < 3) {
       this.router.navigate([`/lessons/${parseInt(this.templateId) + 1}`]);
     }
+  }
+
+  showAnswers() {
+    const element = document.getElementById('answers_list') as HTMLInputElement;
+    this.renderer.setAttribute(element, 'style', 'display: block');
+  }
+
+  hideAnswers() {
+    const element = document.getElementById('answers_list') as HTMLInputElement;
+    this.renderer.setAttribute(element, 'style', 'display: none');
   }
 }
 

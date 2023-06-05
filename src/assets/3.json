@@ -1,5 +1,6 @@
 {
     "title": "Choose the correct answer",
+    "list_of_answers": "1.sleep 2.driving 3.living 4.eat 5.being 6.getting up 7.play 8.get used to",
     "tasks": [
         {
             "answers": [
@@ -69,7 +70,7 @@
                 "get used to"
             ],
             "sentences": [
-                "7. Living in a foreign country seems strange at first, but you soon",
+                "8. Living in a foreign country seems strange at first, but you soon",
                 "(get used / get used to) it."
             ]
         }

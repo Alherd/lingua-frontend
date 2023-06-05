@@ -12,6 +12,10 @@
       <p> {{ task.sentences[task.sentences.length - 1] }}</p>
       <div><br></div>
     </div>
+    <div><button (click)="showAnswers()">Answers</button>
+      <p id="answers_list" style="display: none;"> {{ jsonData?.list_of_answers }}</p>
+      <div><br></div>
+    </div>
     <div>
       <button (click)="clickPrev()">Prev</button>
       <button (click)="clickNext()" style="margin-left: 20px;">Next</button>
