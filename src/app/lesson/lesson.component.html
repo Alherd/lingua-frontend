@@ -1,6 +1,7 @@
 <div class="container">
   <div class="content" id="lesson1_container_content">
     <h2 [innerHTML]="jsonData?.title.replace('\n', '<br>')"></h2>
+    <div><br><br></div>
     <div *ngFor="let task of jsonData?.tasks">
       <p *ngFor="let answer of task.answers">
         {{ task.sentences[task.answers.indexOf(answer)] }}
@@ -10,6 +11,10 @@
       </p>
       <p> {{ task.sentences[task.sentences.length - 1] }}</p>
       <div><br></div>
+    </div>
+    <div>
+      <button (click)="clickPrev()">Prev</button>
+      <button (click)="clickNext()" style="margin-left: 20px;">Next</button>
     </div>
   </div>
 </div>

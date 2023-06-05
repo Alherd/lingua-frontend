@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LessonService } from './lesson.service';
 import { Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -49,7 +49,7 @@ export class LessonComponent {
   }
 
   constructor(private lessonService: LessonService,
-    private renderer: Renderer2, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
+    private renderer: Renderer2, private activatedRoute: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   getData() {
     this.lessonService.getData().subscribe(data => {
@@ -93,6 +93,18 @@ export class LessonComponent {
     const indexArray = fname.match(regex)
 
     return this.jsonData.tasks[indexArray[0]].answers[indexArray[1]];
+  }
+
+  clickPrev() {
+    if (parseInt(this.templateId) > 1) {
+      this.router.navigate([`/lessons/${parseInt(this.templateId) - 1}`]);
+    }
+  }
+
+  clickNext() {
+    if (parseInt(this.templateId) < 3) {
+      this.router.navigate([`/lessons/${parseInt(this.templateId) + 1}`]);
+    }
   }
 }
 
