@@ -1,1 +1,5 @@
-<p>lessons-list works!</p>
+<ul>
+    <div *ngFor="let item of TASK_NUMBER_ARRAY">
+        <li><a routerLink="/lessons/{{item}}">Task {{item}}</a></li>
+    </div>
+</ul>

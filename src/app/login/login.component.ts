@@ -14,22 +14,22 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService, private http: HttpClient, private router: Router) { }
 
-    handleSubmit() {
+  handleSubmit() {
     // Получение значения из поля формы
     console.log('Введенное имя:', this.email);
     console.log('Введенное имя2:', this.password);
     // Здесь вы можете использовать значение поля формы для выполнения нужных вам действий
     this.loginService.loginUser(this.email, this.password).subscribe(data => {
-      this.router.navigate(['/lessons/1']);
+      this.router.navigate(['/lessons']);
     },
-    (error: HttpErrorResponse) => {
-      if (error.status === 404) {
-        // Обработка ошибки 404
-        console.log('Запись не найдена');
-      } else {
-        // Обработка других ошибок
-        console.log('Произошла ошибка', error.message);
-      }
-    });
+      (error: HttpErrorResponse) => {
+        if (error.status === 404) {
+          // Обработка ошибки 404
+          console.log('Запись не найдена');
+        } else {
+          // Обработка других ошибок
+          console.log('Произошла ошибка', error.message);
+        }
+      });
   }
 }
