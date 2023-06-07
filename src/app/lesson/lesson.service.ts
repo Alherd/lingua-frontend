@@ -36,4 +36,21 @@ export class LessonService {
   getCompletedForms(task_id: string) {
     return this.http.get(`${this.apiUrl}form?task_id=${task_id}`);
   }
+
+  cleanAnswers(task_id: string){
+    console.log('clean form')
+    console.log(`${this.apiUrl}clean?task_id=${task_id}`)
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    this.http.post(`${this.apiUrl}clean?task_id=${task_id}`, {'task_id': task_id}, { headers }).subscribe(
+      response => {
+        console.log('Успешный POST-запрос on clean', response);
+        // Обработайте ответ, который вернул сервер
+      },
+      error => {
+        console.error('Ошибка при выполнении POST-запроса on clean', error);
+        // Обработайте ошибку, если произошла
+      }
+    );
+  }
 }

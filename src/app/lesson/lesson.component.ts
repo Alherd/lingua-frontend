@@ -112,6 +112,17 @@ export class LessonComponent {
     const element = document.getElementById('answers_list') as HTMLInputElement;
     this.renderer.setAttribute(element, 'style', 'display: none');
   }
+
+  cleanAnswers(){
+    const inputs = document.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+      const input = inputs[i] as HTMLInputElement;
+      this.renderer.setStyle(input, 'background-color', '#fff');
+      input.removeAttribute('disabled');
+      input.value = ''; // Очистка значения поля ввода
+    }
+    this.lessonService.cleanAnswers(this.templateId)
+  }
 }
 
 interface Forms {
